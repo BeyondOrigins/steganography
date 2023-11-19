@@ -4,17 +4,20 @@
 #include <fstream>
 using namespace std;
 
-namespace stfuncs {
-    class FileData { // class to store file data
-    private:
-        char buf1[1800000];
-        char buf2[1800000];
-        inline size_t _get_file_length(ifstream& file) {}
-    public:
-        FileData () {}
-        FileData (ifstream& file) {}
-        void write(ofstream&) {}
-    };
+namespace stg {
+  class FileData { // class to store file data
+  private:
+    char* buf;
+    size_t length;
+  public:
+    static size_t GetFileLength(ifstream&);
+    explicit FileData ();
+    FileData& operator=(const FileData& other) = default;
+    explicit FileData (ifstream& file);
+    void wdtf(ofstream&);
+    void rdff(ifstream&);
+    ~FileData();
+  };
 }
 
-#endif
+#endif  // FILE_UTILS_H_

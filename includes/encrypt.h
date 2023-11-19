@@ -7,7 +7,7 @@
 
 using namespace std;
 
-namespace stfuncs {
-    ofstream encrypt(char*, char*, FileData&);
+namespace stg {
+    fstream encrypt(char*, char*, FileData&);
 }
-#endif
+#endif  // ENCRYPT_H_
