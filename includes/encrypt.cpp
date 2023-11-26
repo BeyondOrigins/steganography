@@ -1,13 +1,11 @@
-#include <fstream>
-#include <iostream>
-#include "encrypt.h"
+#include "stdafx.h"
 
-#include <string>
+#include "encrypt.h"
 
 using namespace std;
 
-namespace stg {
-  fstream encrypt(char* key_path, char* data_path, FileData& result) {
-    
-  }
+namespace enc {
+    DLLEXPORT fstream encrypt(FPATH key_path, FPATH data_path, FileData& result) {
+        
+    }
 }
