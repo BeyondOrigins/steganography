@@ -8,7 +8,7 @@ using namespace std;
 namespace enc {
     class FileData { // class to store file data
     private:
-        BUFFER _buf;
+        vector<char> _buf;
         size_t _length;
     public:
         static size_t GetFileLength(ifstream&);
