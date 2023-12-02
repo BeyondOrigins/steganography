@@ -45,20 +45,23 @@ namespace enc {
     }
 
     void FileData::rdff(ifstream& file) { // read data from file
-        this->_length = GetFileLength(file);
         this->_buf.clear();
-        try {
-            // ДОДЕЛАТЬ
-            cout << "Trying to read data from the file...\n";
-            char ch;
-            size_t counter = 0;
-            while (file.get(ch)) {
-                this->_buf.push_back(ch);
+        if (file.is_open()) {
+            string str;
+            while (!file.eof()) {
+                getline(file, str);
+                size_t temp_length = str.length();
+                char* temp_buf = new char[temp_length + 1];
+                strcpy(temp_buf, str.c_str());
+                for (size_t i = 0; i < temp_length; i++)
+                {
+                    this->_buf.push_back(temp_buf[i]);
+                }
+                this->_buf.push_back('\n');
+                delete temp_buf;
             }
-
-            cout << "Success!\n";
+            this->_length = this->_buf.size();
         }
-        catch(exception& ex) {}
     }
 
     FileData::~FileData() { // destructor
