@@ -9,6 +9,6 @@
 using namespace std;
 
 namespace enc {
-    DLLEXPORT fstream encrypt(char*, char*, FileData&);
+    DLLEXPORT void encrypt(char*, char*, FileData&);
 }
 #endif  // ENCRYPT_H_
