@@ -6,7 +6,7 @@
 #include <string>
 #include <cstring>
 
+#include <stdint.h>
+
 #define DLLEXPORT __declspec(dllexport)
 #define DLLIMPORT __declspec(dllimport)
-
-typedef char* FPATHPTR;

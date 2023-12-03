@@ -10,12 +10,9 @@ int main(int argc, char** argv) {
     char key_path[120] = "files\\SMART.jpg";
     char data_path[120] = "files\\file.txt";
     char buf_path[120] = "files\\file1.txt";
-    ifstream file;
-    ofstream ofile;
-    ofile.open(buf_path, ios::out);
-    file.open(data_path); 
-    size_t length = enc::FileData::GetFileLength(file);
-    enc::FileData* file_ = new enc::FileData();
-    file_->rdff(file);
-    file_->wdtf(ofile);
+    
+    enc::FileData* file_ = new enc::TextData();
+    file_->rdff(data_path);
+    file_->wdtf(buf_path);
+    file_->PrintData();
 }
