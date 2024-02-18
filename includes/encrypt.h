@@ -2,13 +2,11 @@
 #define ENCRYPT_H_
 
 #include "stdafx.h"
-
 #include "file_utils.h"
-
 
 using namespace std;
 
 namespace enc {
-    DLLEXPORT void encrypt(char*, char*, FileData&);
+    DLLEXPORT int __stdcall encrypt(string, string, string) noexcept;
 }
 #endif  // ENCRYPT_H_

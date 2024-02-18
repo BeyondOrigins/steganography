@@ -3,19 +3,15 @@
 #include "includes/encrypt.h"
 #include "includes/file_utils.h"
 
-#include "includes/stb_image.h"
-
 using namespace std;
+using namespace enc;
 
 int main(int argc, char** argv) {
     setlocale(LC_ALL, "ru");
-    char txt_path1[120] = "files\\file.txt";
-    char txt_path2[120] = "files\\file1.txt";
-
-    char png_path1[120] = "files\\SMART.png";
-    char png_path2[120] = "files\\SMART1.png";
-    enc::FileData* file = new enc::ImageData();
-    file->rdff(png_path1);
-    file->PrintInfo();
-    file->wdtf(png_path2);
+    char key[120] = "files\\SMART.png";
+    char data[120] = "files\\file.txt";
+    char result[120] = "files\\SMART1.png";
+    int ok = encrypt(key, data, result);
+    if (ok) cout << "Ok\n";
+    else cout << "Error\n";
 }

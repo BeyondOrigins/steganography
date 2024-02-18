@@ -8,56 +8,54 @@ using namespace std;
 namespace enc {
     class FileData { // abstract data container class
     public:
-        enum class FileType {
-            kText = 0,
-            kImage,
-            kAudio
-        };
-        explicit FileData ();
-        static size_t GetFileLength(ifstream&);
-        
-        virtual void wdtf(char*) = 0;
-        virtual void rdff(char*) = 0;
+        virtual int wdtf(const char*) noexcept = 0;
+        virtual int rdff(const char*) noexcept = 0;
+
+        vector<char> GetData() noexcept;
+        void SetData(vector<char>&);
 #ifdef DEVELOPE_MODE
         virtual void PrintData() = 0;
         virtual void PrintInfo() = 0;
 #endif
-        ~FileData();
+    ~FileData();
     protected:
         vector<char> _buf;
         size_t _length;
     };
 
-    class TextData : public FileData { // class to store text files data
+    class TextData : public FileData { // class to contain text files data
     public:
-        const FileType file_type = FileData::FileType::kText;
-        void rdff(char*);
-        void wdtf(char*);
         explicit TextData();
-        explicit TextData(char*);
+        explicit TextData(const char*);
+
+        int rdff(const char*) noexcept override;
+        int wdtf(const char*) noexcept override;
+
 #ifdef DEVELOPE_MODE
-        void PrintData();
-        void PrintInfo();
+        void PrintData() override;
+        void PrintInfo() override;
 #endif
         ~TextData();
     };
 
-    class ImageData : public FileData { // class to store image files data
+    class ImageData : public FileData { // class to contain image files data
     public:
-        const FileType file_type = FileData::FileType::kImage;
-        void rdff(char*);
-        void wdtf(char*);
         explicit ImageData();
-        explicit ImageData(char*);
+        explicit ImageData(const char*);
+
+        int rdff(const char*) noexcept override;
+        int wdtf(const char*) noexcept override;
+
 #ifdef DEVELOPE_MODE
-        void PrintData();
-        void PrintInfo();
+        void PrintData() override;
+        void PrintInfo() override;
 #endif
         ~ImageData();
     private:
         int _height;
         int _width;
-        int _bpp = 8;
+        int _bpc = 8;
+        int _comp = 3;
     };
 }
 
