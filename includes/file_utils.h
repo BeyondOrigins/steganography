@@ -8,11 +8,14 @@ using namespace std;
 namespace enc {
     class FileData { // abstract data container class
     public:
+        static int CreateObject(string, FileData*&);
+
         virtual int wdtf(const char*) noexcept = 0;
         virtual int rdff(const char*) noexcept = 0;
 
         vector<char> GetData() noexcept;
         void SetData(vector<char>&);
+        
 #ifdef DEVELOPE_MODE
         virtual void PrintData() = 0;
         virtual void PrintInfo() = 0;

@@ -25,6 +25,19 @@
 using namespace std;
 
 namespace enc {
+    int FileData::CreateObject(string path, FileData*& obj) {
+        string type = path.substr(path.find_last_of('.') + 1);
+        if (type == "png" || type == "gif" || type == "pic" || type == "jpeg" || type == "bmp" || type == "hdr") {
+            obj = new ImageData(path.c_str());
+            return 1;
+        }
+        else if (type == "txt" || type == "rtf") {
+            obj = new TextData(path.c_str());
+            return 1;
+        }
+        obj = nullptr;
+        return 0;
+    }
 
     vector<char> FileData::GetData() noexcept {
         return this->_buf;
@@ -37,7 +50,7 @@ namespace enc {
     FileData::~FileData() {
         this->_buf.clear();
         cout << "FileData object deleted\n";
-    } 
+    }
 
     TextData::TextData(){}
 

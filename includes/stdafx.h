@@ -8,7 +8,4 @@
 
 #include <stdint.h>
 
-#define DLLEXPORT __declspec(dllexport)
-#define DLLIMPORT __declspec(dllimport)
-
 #define DEVELOPE_MODE
