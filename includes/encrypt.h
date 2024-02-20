@@ -8,6 +8,6 @@ using namespace std;
 
 namespace enc {
     __declspec(dllexport) int __stdcall encrypt(string, string, string) noexcept;
-    __declspec(dllexport) int __stdcall decrypt(string, string, string) noexcept;
+    __declspec(dllexport) int __stdcall decrypt(string, string) noexcept;
 }
 #endif  // ENCRYPT_H_
