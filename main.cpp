@@ -9,19 +9,35 @@ using namespace enc;
 int main(int argc, char **argv)
 {
     setlocale(LC_ALL, "ru");
-    char key[120] = "files\\SMART.png";
-    char data[120] = "files\\file.txt";
-    char result[120] = "files\\SMART1.png";
-    char enc_res[40] = "files\\file1.txt";
-    int ok = encrypt(key, data, result);
-    if (ok)
-        cout << "Ok\n";
+    const char *mode = argv[1];
+    if (strcmp(mode, "encrypt"))
+    {
+        const char *key_path = argv[2];
+        const char *data_path = argv[3];
+        const char *result_path = argv[4];
+        int ok = encrypt(key_path, data_path, result_path);
+        if (ok)
+            cout << "COMPLITED\n";
+        else
+            cout << "FAILED\n";
+    }
+    else if (strcmp(mode, "decrypt"))
+    {
+        const char *enc_path = argv[2];
+        const char *result_path = argv[3];
+        int amount = -1;
+        if (argc == 5)
+        {
+            amount = stoi(argv[4]);
+        }
+        int ok = decrypt(enc_path, result_path, amount);
+        if (ok)
+            cout << "COMPLITED\n";
+        else
+            cout << "FAILED\n";
+    }
     else
-        cout << "Error\n";
-    cout << "\n\n";
-    ok = decrypt(result, enc_res);
-    if (ok)
-        cout << "Ok\n";
-    else
-        cout << "Error\n";
+    {
+        cout << "UNKNOWN OPERATION\n";
+    }
 }

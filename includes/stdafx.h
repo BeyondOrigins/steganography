@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 #include <vector>
 
@@ -8,4 +9,4 @@
 
 #include <stdint.h>
 
-#define DEVELOPE_MODE
+// #define DEVELOPE_MODE

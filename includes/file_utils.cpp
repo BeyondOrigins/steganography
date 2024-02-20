@@ -51,6 +51,7 @@ namespace enc
     void FileData::SetData(vector<char> &new_data)
     {
         this->_buf = new_data;
+        this->_length = new_data.size();
     }
 
     FileData::~FileData()
@@ -61,13 +62,13 @@ namespace enc
 
     TextData::TextData() {}
 
-    TextData::TextData(const char *path)
-    { // constructor
+    TextData::TextData(const char *path) // constructor
+    {
         this->rdff(path);
     }
 
-    int TextData::wdtf(const char *path) noexcept
-    { // write data to file
+    int TextData::wdtf(const char *path) noexcept // write data to file
+    { 
         ofstream file;
         file.open(path, ios::out);
         file.exceptions(fstream::badbit | fstream::failbit);
@@ -93,8 +94,8 @@ namespace enc
         }
     }
 
-    int TextData::rdff(const char *path) noexcept
-    { // read data from file
+    int TextData::rdff(const char *path) noexcept // read data from file
+    { 
         ifstream file;
         file.open(path);
         this->_buf.clear();
